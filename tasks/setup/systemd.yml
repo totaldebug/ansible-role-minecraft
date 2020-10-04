@@ -15,7 +15,9 @@
   register: systemd_service_config
 
 - name: reload systemd
-  command: systemctl daemon-reload
+  systemd:
+    state: restarted
+    daemon_reload: true
   become: true
   when: systemd_service_config.changed
 
