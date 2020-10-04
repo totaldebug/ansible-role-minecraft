@@ -2,6 +2,8 @@
 
 This role installs Minecraft or Spigot and configures it to run under systemd or Supervisor.
 
+ credit to devops-coop who created most of this release.
+
 # Install
 
 ```
