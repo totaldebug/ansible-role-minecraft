@@ -9,7 +9,7 @@
   args:
     creates: server.properties
     chdir: "{{ minecraft_home }}"
-  become: yes
+  become: true
   become_user: "{{ minecraft_user }}"
 
 - name: update server.properties

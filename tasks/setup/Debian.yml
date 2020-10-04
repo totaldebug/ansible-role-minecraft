@@ -10,7 +10,7 @@
   apt:
     name: "{{ item }}"
     state: present
-    install_recommends: no
+    install_recommends: false
     default_release: "{{ (ansible_distribution_release == 'jessie') | ternary('jessie-backports', omit) }}"
   with_items: "{{ dependencies }}"
 

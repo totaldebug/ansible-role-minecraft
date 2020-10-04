@@ -13,7 +13,7 @@
   group:
     state: present
     name: "{{ minecraft_group }}"
-    system: yes
+    system: true
 
 - name: create Minecraft user
   user:
