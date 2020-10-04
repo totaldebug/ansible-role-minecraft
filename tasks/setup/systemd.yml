@@ -1,0 +1,38 @@
+---
+
+- name: install units
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item | replace('minecraft', minecraft_service_name) }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - minecraft.service
+    - minecraft.socket
+  notify:
+    - restart Minecraft
+  register: systemd_service_config
+
+- name: reload systemd
+  command: systemctl daemon-reload
+  become: true
+  when: systemd_service_config.changed
+
+- name: configure console directory
+  template:
+    src: tmpfiles.d/minecraft.conf.j2
+    dest: "/etc/tmpfiles.d/{{ minecraft_service_name }}.conf"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: check if tmpfile exists
+  stat:
+    path: /etc/tmpfiles.d/{{ minecraft_service_name }}.conf
+  register: minecraft_tmpfile
+
+- name: create console directory
+  command: systemd-tmpfiles --create /etc/tmpfiles.d/{{ minecraft_service_name }}.conf
+  become: true
+  when: minecraft_tmpfile.stat.islnk

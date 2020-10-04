@@ -1,0 +1,4 @@
+---
+dependencies:
+  - openjdk-8-jdk
+  - sudo

@@ -1,0 +1,39 @@
+---
+
+- name: check for supported OS
+  assert:
+    that:
+      - "ansible_os_family in supported_ansible_os_families"
+
+- name: check for supported server implementation
+  assert:
+    that:
+      - "minecraft_server in supported_minecraft_servers"
+
+- include: "{{ minecraft_hook_before_setup | default('dummy.yml') }}"
+
+- include: setup/main.yml
+
+- include: "{{ minecraft_hook_after_setup | default('dummy.yml') }}"
+
+- include: "{{ minecraft_hook_before_download | default('dummy.yml') }}"
+
+- include: download/main.yml
+
+- include: "{{ minecraft_hook_after_download | default('dummy.yml') }}"
+
+- include: "{{ minecraft_hook_before_install | default('dummy.yml') }}"
+
+- include: install/main.yml
+
+- include: "{{ minecraft_hook_after_install | default('dummy.yml') }}"
+
+- include: acl.yml
+
+- include: configure.yml
+
+- include: "{{ minecraft_hook_before_start | default('dummy.yml') }}"
+
+- meta: flush_handlers
+
+- include: "{{ minecraft_hook_after_start | default('dummy.yml') }}"

@@ -1,0 +1,22 @@
+---
+
+minecraft_server_type: minecraft
+minecraft_version: latest
+minecraft_server_download_url: https://launcher.mojang.com/v1/objects
+minecraft_user: "{{ minecraft_server }}"
+minecraft_group: "{{ minecraft_server }}"
+minecraft_home: /srv/{{ minecraft_server }}
+minecraft_max_memory: 1024M
+minecraft_initial_memory: 1024M
+minecraft_service_name: "{{ minecraft_server }}"
+minecraft_supervisor_name: "{{ minecraft_service_name }}"
+minecraft_whitelist: []
+minecraft_ops: []
+minecraft_banned_players: []
+minecraft_banned_ips: []
+minecraft_console_fifo: /run/{{ minecraft_service_name }}/console
+minecraft_console_fifo_mode: '0666'
+minecraft_process_control: systemd
+minecraft_server_properties: {}
+
+minecraft_spigot_url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar

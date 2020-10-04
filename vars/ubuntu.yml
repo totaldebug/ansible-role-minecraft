@@ -1,0 +1,4 @@
+---
+dependencies:
+  - default-jdk
+  - sudo

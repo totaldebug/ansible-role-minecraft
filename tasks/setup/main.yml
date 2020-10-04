@@ -1,0 +1,36 @@
+---
+
+- name: include OS-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: include OS-specific tasks
+  include: "{{ ansible_os_family }}.yml"
+
+- name: create Minecraft group
+  group:
+    state: present
+    name: "{{ minecraft_group }}"
+    system: yes
+
+- name: create Minecraft user
+  user:
+    state: present
+    name: "{{ minecraft_user }}"
+    group: "{{ minecraft_group }}"
+    home: "{{ minecraft_home }}"
+
+- name: set executable name (Minecraft)
+  set_fact:
+    minecraft_jar: minecraft_server.jar
+  when: minecraft_server == 'minecraft'
+
+- name: set executable name (Spigot)
+  set_fact:
+    minecraft_jar: spigot.jar
+  when: minecraft_server == 'spigot'
+
+- include: systemd.yml
+  when: minecraft_process_control == 'systemd'
