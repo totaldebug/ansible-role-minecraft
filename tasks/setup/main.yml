@@ -25,12 +25,12 @@
 - name: set executable name (Minecraft)
   set_fact:
     minecraft_jar: minecraft_server.jar
-  when: minecraft_server == 'minecraft'
+  when: minecraft_server_type == 'minecraft'
 
 - name: set executable name (Spigot)
   set_fact:
     minecraft_jar: spigot.jar
-  when: minecraft_server == 'spigot'
+  when: minecraft_server_type == 'spigot'
 
 - include: systemd.yml
   when: minecraft_process_control == 'systemd'

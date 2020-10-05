@@ -20,4 +20,4 @@
   with_items:
     - git
     - tar
-  when: minecraft_server == 'spigot'
+  when: minecraft_server_type == 'spigot'
