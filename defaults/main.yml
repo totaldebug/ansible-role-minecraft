@@ -3,12 +3,12 @@
 minecraft_server_type: minecraft
 minecraft_version: latest
 minecraft_server_download_url: https://launcher.mojang.com/v1/objects
-minecraft_user: "{{ minecraft_server }}"
-minecraft_group: "{{ minecraft_server }}"
-minecraft_home: /srv/{{ minecraft_server }}
+minecraft_user: "{{ minecraft_server_type }}"
+minecraft_group: "{{ minecraft_server_type }}"
+minecraft_home: /srv/{{ minecraft_server_type }}
 minecraft_max_memory: 1024M
 minecraft_initial_memory: 1024M
-minecraft_service_name: "{{ minecraft_server }}"
+minecraft_service_name: "{{ minecraft_server_type }}"
 minecraft_supervisor_name: "{{ minecraft_service_name }}"
 minecraft_whitelist: []
 minecraft_ops: []
