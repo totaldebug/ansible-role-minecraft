@@ -5,11 +5,12 @@
 # starts.
 
 - name: generate server.properties
-  shell: echo "stop" | java -jar {{ minecraft_jar }} nogui
+  shell: >
+    set -o pipefail && \
+      echo "stop" | java -jar {{ minecraft_jar }} nogui
   args:
     creates: server.properties
     chdir: "{{ minecraft_home }}"
-    executable: /bin/bash
   become: true
   become_user: "{{ minecraft_user }}"
 
