@@ -8,7 +8,7 @@
 - name: check for supported server implementation
   assert:
     that:
-      - "minecraft_server in supported_minecraft_servers"
+      - "minecraft_server_type in supported_minecraft_servers"
 
 - include: "{{ minecraft_hook_before_setup | default('dummy.yml') }}"
 
