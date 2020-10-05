@@ -34,6 +34,7 @@
 
 - name: reload systemd
   systemd:
+    name: minecraft
     state: restarted
     daemon_reload: true
   become: true
