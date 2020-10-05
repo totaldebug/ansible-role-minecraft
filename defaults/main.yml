@@ -2,7 +2,7 @@
 
 minecraft_server_type: minecraft
 minecraft_version: latest
-minecraft_server_download_url: https://launcher.mojang.com/v1/objects
+minecraft_server_manifest_url: https://launcher.mojang.com/v1/objects
 minecraft_user: "{{ minecraft_server_type }}"
 minecraft_group: "{{ minecraft_server_type }}"
 minecraft_home: /srv/{{ minecraft_server_type }}
