@@ -31,3 +31,10 @@
     - "{{ minecraft_service_name }}.service"
     - "{{ minecraft_service_name }}.socket"
   when: minecraft_process_control == 'systemd'
+
+- name: reload systemd
+  systemd:
+    state: restarted
+    daemon_reload: true
+  become: true
+  when: systemd_service_config.changed
