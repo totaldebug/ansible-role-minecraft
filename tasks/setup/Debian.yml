@@ -12,6 +12,7 @@
     name: "{{ dependencies }}"
     state: present
     install_recommends: false
+    update_cache: true
     default_release: "{{ (ansible_distribution_release == 'jessie') | ternary('jessie-backports', omit) }}"
 
 - name: install Spigot dependencies
