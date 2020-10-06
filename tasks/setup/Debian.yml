@@ -7,7 +7,7 @@
   when: ansible_os_family == 'Debian'
   changed_when: false
 
-# See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199 
+# See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
 - name: Ensure 'man' directory exists.
   file:  # noqa 208
     path: /usr/share/man/man1
