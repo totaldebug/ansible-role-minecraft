@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - default-jdk
+  - openjdk-11-jre-headless
   - sudo

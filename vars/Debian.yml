@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - openjdk-8-jdk
+  - openjdk-11-jre-headless
   - sudo
