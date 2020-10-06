@@ -6,6 +6,11 @@
     cache_valid_time: 600
   when: ansible_os_family == 'Debian'
   changed_when: false
+  
+- name: Java Fix for Debian bug
+  file:
+    path:  /usr/share/man/man1/
+    state: directory
 
 - name: install Minecraft dependencies
   apt:
