@@ -69,3 +69,4 @@ jobs:
           molecule test
         env:
           MOLECULE_DISTRO: ${{ matrix.molecule_distro }}
+          MOLECULE_PLAYBOOK: ${{ matrix.molecule_playbook }}
