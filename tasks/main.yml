@@ -12,25 +12,30 @@
 
 - include: "{{ minecraft_hook_before_setup | default('dummy.yml') }}"
 
-- include: setup/main.yml
+- name: Start Setup
+  include: setup/main.yml
 
 - include: "{{ minecraft_hook_after_setup | default('dummy.yml') }}"
 
 - include: "{{ minecraft_hook_before_download | default('dummy.yml') }}"
 
-- include: download/main.yml
+- name: Start Download
+  include: download/main.yml
 
 - include: "{{ minecraft_hook_after_download | default('dummy.yml') }}"
 
 - include: "{{ minecraft_hook_before_install | default('dummy.yml') }}"
 
-- include: install/main.yml
+- name: Start Install
+  include: install/main.yml
 
 - include: "{{ minecraft_hook_after_install | default('dummy.yml') }}"
 
-- include: acl.yml
+- name: Start ACL
+  include: acl.yml
 
-- include: configure.yml
+- name: Start Configure
+  include: configure.yml
 
 - include: "{{ minecraft_hook_before_start | default('dummy.yml') }}"
 
