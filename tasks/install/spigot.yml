@@ -20,8 +20,8 @@
   become_user: "{{ minecraft_user }}"
   register: dir_out
 
-- debug: var={{ item }}
-  with_items: dir_out.stdout_lines
+- debug:
+    var: dir_out.stdout_lines
 
 - name: symlink Spigot server
   file:
