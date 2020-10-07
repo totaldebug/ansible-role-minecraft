@@ -3,7 +3,7 @@
 - name: build Spigot server
   command: java -jar BuildTools.jar --rev "{{ minecraft_version_latest | default(minecraft_version) }}"
   args:
-    creates: spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar
+    creates: "spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar"
     chdir: "{{ minecraft_home }}/build"
   environment:
     SHELL: /bin/bash

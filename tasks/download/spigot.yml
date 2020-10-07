@@ -4,9 +4,9 @@
   file:
     path: "{{ minecraft_home }}/build"
     state: directory
-    mode: 0755
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_group }}"
+    mode: 0755
 
 - name: download Spigot build tools
   get_url:
