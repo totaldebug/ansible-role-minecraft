@@ -48,8 +48,8 @@ jobs:
           - ubuntu1804
           - debian10
         molecule_playbook:
-          - minecraft
-          - spigot
+          - minecraft.yml
+          - spigot.yml
     env:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
       ROLE_NAME: minecraft
