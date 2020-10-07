@@ -16,7 +16,7 @@ galaxy_info:
         - 10
     - name: Ubuntu
       versions:
-        - 18.04
+        - bionic
   galaxy_tags:
     - minecraft
     - spigot

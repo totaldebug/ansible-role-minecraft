@@ -47,7 +47,7 @@ jobs:
           - centos7
           - ubuntu1804
           - debian10
-        minecraft_type:
+        molecule_playbook:
           - minecraft
           - spigot
     env:

@@ -1,10 +1,10 @@
 ---
-- name: Converge
+- name: Minecraft
   hosts: all
   become: true
 
   vars:
-    minecraft_server_type: "${MINECRAFT_TYPE:-minecraft}"
+    minecraft_server_type: minecraft
     minecraft_version: latest
     minecraft_max_memory: 2048M
     minecraft_server_properties:
