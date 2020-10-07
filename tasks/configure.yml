@@ -11,6 +11,7 @@
   args:
     creates: server.properties
     chdir: "{{ minecraft_home }}"
+    executable: /bin/bash
   become: true
   become_user: "{{ minecraft_user }}"
 
