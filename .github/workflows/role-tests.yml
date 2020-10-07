@@ -48,8 +48,8 @@ jobs:
           - ubuntu1804
           - debian10
         molecule_playbook:
-          - converge.yml
-          - spigot.yml
+          - converge-minecraft.yml
+          - converge-spigot.yml
     env:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
       ROLE_NAME: minecraft
