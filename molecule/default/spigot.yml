@@ -1,5 +1,5 @@
 ---
-- name: Spigot
+- name: Converge
   hosts: all
   become: true
 

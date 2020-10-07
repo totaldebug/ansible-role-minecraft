@@ -1,5 +1,5 @@
 ---
-- name: minecraft
+- name: Converge
   hosts: all
   become: true
 
