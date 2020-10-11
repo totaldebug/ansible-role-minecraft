@@ -10,19 +10,6 @@
   become: true
   become_user: "{{ minecraft_user }}"
 
-- name: Check file exists
-  command: "ls"
-  args:
-    chdir: "{{ minecraft_home }}/build"
-  environment:
-    SHELL: /bin/bash
-  become: true
-  become_user: "{{ minecraft_user }}"
-  register: dir_out
-
-- debug:
-    var: dir_out.stdout_lines
-
 - name: symlink Spigot server
   file:
     src: "{{item}}"
