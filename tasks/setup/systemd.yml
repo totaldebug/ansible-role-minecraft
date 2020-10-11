@@ -12,7 +12,6 @@
     - minecraft.socket
   notify:
     - restart Minecraft
-    - reload systemd
   register: systemd_service_config
 
 - name: Flush Handlers

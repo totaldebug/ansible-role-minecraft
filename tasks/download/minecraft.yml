@@ -10,4 +10,4 @@
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_group }}"
     checksum: "{{ minecraft_server_download_checksum }}"
-    mode: '0755'
+    mode: 0755

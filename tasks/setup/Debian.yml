@@ -7,6 +7,16 @@
   when: ansible_os_family == 'Debian'
   changed_when: false
 
+# See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
+- name: Ensure 'man' directory exists.
+  file:  # noqa 208
+    path: /usr/share/man/man1
+    state: directory
+    recurse: true
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_major_version | int >= 18
+
 - name: install Minecraft dependencies
   apt:
     name: "{{ dependencies }}"

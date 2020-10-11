@@ -13,10 +13,10 @@ galaxy_info:
         - 8
     - name: Debian
       versions:
-        - 10
+        - buster
     - name: Ubuntu
       versions:
-        - 18.04
+        - bionic
   galaxy_tags:
     - minecraft
     - spigot

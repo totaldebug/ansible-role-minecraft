@@ -3,12 +3,25 @@
 - name: build Spigot server
   command: java -jar BuildTools.jar --rev "{{ minecraft_version_latest | default(minecraft_version) }}"
   args:
-    creates: spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar
+    creates: "spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar"
     chdir: "{{ minecraft_home }}/build"
   environment:
     SHELL: /bin/bash
   become: true
   become_user: "{{ minecraft_user }}"
+
+- name: Check file exists
+  command: "ls"
+  args:
+    chdir: "{{ minecraft_home }}/build"
+  environment:
+    SHELL: /bin/bash
+  become: true
+  become_user: "{{ minecraft_user }}"
+  register: dir_out
+
+- debug:
+    var: dir_out.stdout_lines
 
 - name: symlink Spigot server
   file:

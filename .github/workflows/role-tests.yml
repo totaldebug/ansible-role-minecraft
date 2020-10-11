@@ -48,6 +48,9 @@ jobs:
           - ubuntu2004
           - ubuntu1804
           - debian10
+        molecule_playbook:
+          - converge-minecraft.yml
+          - converge-spigot.yml
     env:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
       ROLE_NAME: minecraft
@@ -67,3 +70,4 @@ jobs:
           molecule test
         env:
           MOLECULE_DISTRO: ${{ matrix.molecule_distro }}
+          MOLECULE_PLAYBOOK: ${{ matrix.molecule_playbook }}
