@@ -12,11 +12,12 @@
 
 - name: symlink Spigot server
   file:
-    src: "{{ minecraft_home }}/build/spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar"
+    src: "{{item}}"
     path: "{{ minecraft_home }}/spigot.jar"
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_group }}"
     state: link
+  with_fileglob: " {{ minecraft_home }}/build/spigot-*.jar"
   notify:
     - restart Minecraft
 
