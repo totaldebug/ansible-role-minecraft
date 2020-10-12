@@ -12,7 +12,7 @@
 
 - name: symlink Spigot server
   file:
-    src: "{{{ minecraft_home }}/build/spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar"
+    src: "{{ minecraft_home }}/build/spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar"
     path: "{{ minecraft_home }}/spigot.jar"
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_group }}"
