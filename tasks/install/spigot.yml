@@ -9,10 +9,18 @@
     SHELL: /bin/bash
   become: true
   become_user: "{{ minecraft_user }}"
+  changed_when: false
+
+- name: Find new spigot jar file
+  shell: ls -r spigot-* | head -1
+  args:
+    chdir: "{{ minecraft_home }}/build"
+  register: spigot_file
+  changed_when: false
 
 - name: symlink Spigot server
   file:
-    src: "{{ minecraft_home }}/build/spigot-{{ minecraft_version_latest | default(minecraft_version) }}.jar"
+    src: "{{ minecraft_home }}/build/{{ spigot_file.stdout }}"
     path: "{{ minecraft_home }}/spigot.jar"
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_group }}"
