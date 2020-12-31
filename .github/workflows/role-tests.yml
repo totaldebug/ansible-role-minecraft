@@ -43,13 +43,13 @@ jobs:
       fail-fast: false
       max-parallel: 4
       matrix:
-        molecule_distro:
+        distro:
           #- centos8
           #- centos7
           #- ubuntu2004
           #- ubuntu1804
           - debian10
-        molecule_playbook:
+        playbook:
           - converge-minecraft.yml
           - converge-spigot.yml
     env:
@@ -57,20 +57,23 @@ jobs:
       ROLE_NAME: minecraft
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up Python 3
-        uses: actions/setup-python@v1
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+        with:
+          path: 'geerlingguy.redis'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          python -V
-          python3 -V
-          python -m pip install --upgrade pip
-          python3 -m pip install molecule[docker]
-      - name: Test with molecule
-        run: |
-          molecule test
+
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule[docker] docker
+
+      - name: Run Molecule tests.
+        run: molecule test
         env:
-          MOLECULE_DISTRO: ${{ matrix.molecule_distro }}
-          MOLECULE_PLAYBOOK: ${{ matrix.molecule_playbook }}
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+          MOLECULE_PLAYBOOK: ${{ matrix.playbook }}
