@@ -44,10 +44,10 @@ jobs:
       max-parallel: 4
       matrix:
         molecule_distro:
-          - centos8
-          - centos7
-          - ubuntu2004
-          - ubuntu1804
+          #- centos8
+          #- centos7
+          #- ubuntu2004
+          #- ubuntu1804
           - debian10
         molecule_playbook:
           - converge-minecraft.yml
@@ -64,8 +64,10 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: |
+          python -V
+          python3 -V
           python -m pip install --upgrade pip
-          pip install molecule docker molecule-docker
+          python3 -m pip install molecule[docker]
       - name: Test with molecule
         run: |
           molecule test
