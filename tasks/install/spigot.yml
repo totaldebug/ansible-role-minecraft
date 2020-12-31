@@ -12,8 +12,11 @@
   changed_when: false
 
 - name: Find new spigot jar file
-  shell: ls -r spigot-* | head -1
+  shell: >
+         set -o pipefail && \
+         ls -r spigot-* | head -1
   args:
+    executable: /bin/bash
     chdir: "{{ minecraft_home }}/build"
   register: spigot_file
   changed_when: false
