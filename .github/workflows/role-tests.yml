@@ -7,35 +7,38 @@ on:
     branches:
       - master
   workflow_dispatch:
+  schedule:
+    - cron: "30 2 * * 5"
+
+defaults:
+  run:
+    working-directory: 'geerlingguy.redis'
 
 jobs:
-  yaml_lint:
+
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Getting your configuration from GitHub
-        uses: actions/checkout@v1
-      - name: Running YAMLlint
-        uses: "docker://pipelinecomponents/yamllint:latest"
-        with:
-          args: yamllint .
-  remark_lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Getting your configuration from GitHub
-        uses: actions/checkout@v1
-      - name: Running Remark lint
-        uses: "docker://pipelinecomponents/remark-lint:latest"
-        continue-on-error: true
-        with:
-          args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
-  ansible_lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Getting your configuration from GitHub
+      - name: Check out the codebase.
         uses: actions/checkout@v2
-      - name: Lint Ansible Role
-        # replace "master" with any valid ref
-        uses: ansible/ansible-lint-action@master
+        with:
+          path: 'totaldebug.ansible-role-'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint ansible-lint
+
+      - name: Lint code.
+        run: |
+          yamllint .
+          ansible-lint
+          remark --no-stdout --color --frail --use preset-lint-recommended .
+
   check_role:
     runs-on: ubuntu-latest
     needs: [yaml_lint, remark_lint, ansible_lint]
@@ -60,7 +63,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v2
         with:
-          path: 'geerlingguy.redis'
+          path: 'totaldebug.ansible-role-minecraft'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
