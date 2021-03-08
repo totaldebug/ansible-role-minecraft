@@ -1,6 +1,7 @@
 ---
 
-- include: fetch_version_download.yml
+- name: fetch the version to install if a URL is not defined
+  include: fetch_version_download.yml
   when: minecraft_server_download_url is undefined
 
 - name: download Minecraft server

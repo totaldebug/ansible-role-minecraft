@@ -1,3 +1,4 @@
 ---
 
-- include: "{{ minecraft_server_type }}.yml"
+- name: Include download tasks
+  include: "{{ minecraft_server_type }}.yml"
