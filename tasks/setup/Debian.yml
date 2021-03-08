@@ -6,6 +6,7 @@
     cache_valid_time: 600
   when: ansible_os_family == 'Debian'
   changed_when: false
+  become: true
 
 # See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
 - name: Ensure 'man' directory exists.
