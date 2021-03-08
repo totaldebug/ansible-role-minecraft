@@ -10,26 +10,32 @@
     that:
       - "minecraft_server_type in supported_minecraft_servers"
 
-- include: "{{ minecraft_hook_before_setup | default('dummy.yml') }}"
+- name: Include any before setup hooks
+  include: "{{ minecraft_hook_before_setup | default('dummy.yml') }}"
 
 - name: Start Setup
   include: setup/main.yml
 
-- include: "{{ minecraft_hook_after_setup | default('dummy.yml') }}"
+- name: Include any after setup hooks
+  include: "{{ minecraft_hook_after_setup | default('dummy.yml') }}"
 
-- include: "{{ minecraft_hook_before_download | default('dummy.yml') }}"
+- name: Include any before download hooks
+  include: "{{ minecraft_hook_before_download | default('dummy.yml') }}"
 
 - name: Start Download
   include: download/main.yml
 
-- include: "{{ minecraft_hook_after_download | default('dummy.yml') }}"
+- name: Include any after download hooks
+  include: "{{ minecraft_hook_after_download | default('dummy.yml') }}"
 
-- include: "{{ minecraft_hook_before_install | default('dummy.yml') }}"
+- name: Include any before install hooks
+  include: "{{ minecraft_hook_before_install | default('dummy.yml') }}"
 
 - name: Start Install
   include: install/main.yml
 
-- include: "{{ minecraft_hook_after_install | default('dummy.yml') }}"
+- name: Include any after install hooks
+  include: "{{ minecraft_hook_after_install | default('dummy.yml') }}"
 
 - name: Start ACL
   include: acl.yml
@@ -37,8 +43,10 @@
 - name: Start Configure
   include: configure.yml
 
-- include: "{{ minecraft_hook_before_start | default('dummy.yml') }}"
+- name: Include any before start hooks
+  include: "{{ minecraft_hook_before_start | default('dummy.yml') }}"
 
 - meta: flush_handlers
 
-- include: "{{ minecraft_hook_after_start | default('dummy.yml') }}"
+- name: Include any after start hooks
+  include: "{{ minecraft_hook_after_start | default('dummy.yml') }}"
