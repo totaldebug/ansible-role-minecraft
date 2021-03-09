@@ -32,5 +32,4 @@
 
 - name: create console directory
   command: systemd-tmpfiles --create /etc/tmpfiles.d/{{ minecraft_service_name }}.conf
-  become: true
   when: minecraft_tmpfile.stat.islnk
