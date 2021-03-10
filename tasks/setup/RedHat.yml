@@ -3,6 +3,7 @@
   yum:
     name: "{{ dependencies }}"
     state: present
+  become: true
 
 - name: install Spigot dependencies
   yum:
@@ -11,3 +12,4 @@
     - git
     - tar
   when: minecraft_server_type == 'spigot'
+  become: true

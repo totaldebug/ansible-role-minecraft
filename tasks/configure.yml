@@ -13,7 +13,6 @@
     chdir: "{{ minecraft_home }}"
     executable: /bin/bash
   become: true
-  become_user: "{{ minecraft_user }}"
 
 - name: update server.properties
   minecraft_server_file:
@@ -22,5 +21,6 @@
     path: "{{ minecraft_home }}/server.properties"
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
+  become: true
   notify:
     - restart Minecraft

@@ -1,5 +1,5 @@
 ---
-
+allow_world_readable_tmpfiles: true
 minecraft_server_type: minecraft
 minecraft_version: latest
 minecraft_server_manifest_url: https://launcher.mojang.com/v1/objects
